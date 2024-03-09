@@ -122,7 +122,7 @@ public class Util {
 						continue;
 					}
 					
-					StringFunctions.sendMessage(target, "Campfire spawn point removed.", ChatFormatting.DARK_GRAY);
+					MessageFunctions.sendMessage(target, "Campfire spawn point removed.", ChatFormatting.DARK_GRAY);
 				}
 			}
 		}

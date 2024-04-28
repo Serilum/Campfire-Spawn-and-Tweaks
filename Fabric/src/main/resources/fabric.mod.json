@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "campfirespawnandtweaks",
-  "version": "3.7",
+  "version": "3.8",
 
   "name": "Campfire Spawn and Tweaks",
   "description": "Allows player to set spawn points inside a campfire, gives fire resistance on respawn and does some other tweaks.",
@@ -23,7 +23,7 @@
     "fabric": "*",
     "minecraft": ">=1.20",
     "java": ">=17",
-    "collective": ">=7.53"
+    "collective": ">=7.54"
   },
 
   "custom": {

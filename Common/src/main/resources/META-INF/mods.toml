@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="campfirespawnandtweaks"
-version="3.7"
+version="3.8"
 displayName="Campfire Spawn and Tweaks"
 displayURL="https://serilum.com/mod/campfire-spawn-and-tweaks"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.campfirespawnandtweaks]]
     modId="collective"
     mandatory=true
-    versionRange="[7.53,)"
+    versionRange="[7.54,)"
     ordering="NONE"
     side="BOTH"
 

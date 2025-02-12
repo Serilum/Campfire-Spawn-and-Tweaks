@@ -9,7 +9,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -17,7 +16,6 @@ import net.neoforged.neoforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
-@EventBusSubscriber
 public class NeoForgeCampfireEvent {
 	@SubscribeEvent
 	public static void onWorldLoad(LevelEvent.Load e) {

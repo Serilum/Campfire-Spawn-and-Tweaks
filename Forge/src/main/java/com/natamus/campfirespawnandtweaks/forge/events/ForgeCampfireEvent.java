@@ -15,12 +15,10 @@ import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber
 public class ForgeCampfireEvent {
 	@SubscribeEvent
-	public void onWorldLoad(LevelEvent.Load e) {
+	public static void onWorldLoad(LevelEvent.Load e) {
 		Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
 		if (level == null) {
 			return;
@@ -30,7 +28,7 @@ public class ForgeCampfireEvent {
 	}
 	
 	@SubscribeEvent
-	public void onWorldTick(LevelTickEvent e) {
+	public static void onWorldTick(LevelTickEvent e) {
 		Level level = e.level;
 		if (level.isClientSide) {
 			return;
@@ -40,7 +38,7 @@ public class ForgeCampfireEvent {
 	}
 	
 	@SubscribeEvent
-	public void onEntityBlockPlace(EntityPlaceEvent e) {
+	public static void onEntityBlockPlace(EntityPlaceEvent e) {
 		Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
 		if (level == null) {
 			return;
@@ -55,14 +53,14 @@ public class ForgeCampfireEvent {
 	}
 	
 	@SubscribeEvent
-	public void onRightClickCampfireBlock(PlayerInteractEvent.RightClickBlock e) {
+	public static void onRightClickCampfireBlock(PlayerInteractEvent.RightClickBlock e) {
 		if (!CampfireEvent.onRightClickCampfireBlock(e.getLevel(), e.getEntity(), e.getHand(), e.getPos(), e.getHitVec())) {
 			e.setCanceled(true);
 		}
 	}
 	
 	@SubscribeEvent
-	public void onCampfireBreak(BlockEvent.BreakEvent e) {
+	public static void onCampfireBreak(BlockEvent.BreakEvent e) {
 		Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
 		if (level == null) {
 			return;
@@ -72,7 +70,7 @@ public class ForgeCampfireEvent {
 	}
 	
 	@SubscribeEvent
-	public void onPlayerRespawn(PlayerRespawnEvent e) {
+	public static void onPlayerRespawn(PlayerRespawnEvent e) {
 		Player player = e.getEntity();
 		Level level = player.level();
 		if (level.isClientSide) {

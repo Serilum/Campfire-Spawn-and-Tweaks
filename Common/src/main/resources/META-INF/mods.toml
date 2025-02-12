@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="campfirespawnandtweaks"
-version="3.9"
+version="4.0"
 displayName="Campfire Spawn and Tweaks"
 displayURL="https://serilum.com/mod/campfire-spawn-and-tweaks"
 authors="Rick South"
@@ -14,7 +14,7 @@ description='''Allows player to set spawn points inside a campfire, gives fire r
 '''
 credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
 
-Alister, Andrean Olgo, aternosorg, Cherriesaurus, Michael W. S., Nahuel Fernandez, Shana Gitnick, Tyler Behl   
+Alister, Andrean Olgo, aternosorg, Cherriesaurus, David Sanchez, drdog111, Michael W. S., t128, Tyler Behl, XAgent   
 
 If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
 '''
@@ -23,7 +23,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
     modId="collective"
     type="required"
     mandatory=true
-    versionRange="[7.78,)"
+    versionRange="[7.91,)"
     ordering="NONE"
     side="BOTH"
 

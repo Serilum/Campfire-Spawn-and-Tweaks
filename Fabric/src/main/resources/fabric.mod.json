@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "campfirespawnandtweaks",
-  "version": "4.0",
+  "version": "4.1",
 
   "name": "Campfire Spawn and Tweaks",
   "description": "Allows player to set spawn points inside a campfire, gives fire resistance on respawn and does some other tweaks.",

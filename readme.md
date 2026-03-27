@@ -20,27 +20,27 @@
 <p><span style="font-size:16px"><span style="font-size:16px"><strong style="font-weight:600;font-style:normal;font-size:12px;line-height:inherit;font-family:&#x27;Helvetica Neue&#x27;, Helvetica, Arial, sans-serif;color:#19171c;text-align:left;text-indent:0px;text-transform:none;background-color:#ffffff;border:0px solid #a49fad">◉&nbsp; &nbsp;</strong>Crouch + right-clicking a bed will overwrite the campfire spawn position.</span></span></p>
 <p><span style="font-size:16px"><span style="font-size:16px"><strong style="font-weight:600;font-style:normal;font-size:12px;line-height:inherit;font-family:&#x27;Helvetica Neue&#x27;, Helvetica, Arial, sans-serif;color:#19171c;text-align:left;text-indent:0px;text-transform:none;background-color:#ffffff;border:0px solid #a49fad">◉&nbsp; &nbsp;</strong>Crouch + right-clicking a campfire will remove the spawn position. Or do the same when lighting it to prevent a position of being set.</span><br></span></p>
 <p><br><br><strong><span style="font-size:20px">Configurable:</span> <span style="color:#008000;font-size:14px"><a style="color:#008000" href="https://github.com/Serilum/.information/wiki/how-to-configure-mods" rel="nofollow">(&nbsp;how do I configure?&nbsp;)</a></span><br></strong><span style="font-size:12px"><strong>campfiresStartUnlit</strong>&nbsp;(default = true): When enabled, a newly placed campfire will be unlit.</span><br><span style="font-size:12px"><strong>sneakRightClickCampfireToUnset</strong>&nbsp;(default = true): Crouching/Sneaking and right-clicking on a campfire unsets the campfire spawn point.</span><br><span style="font-size:12px"><strong>bedsOverrideCampfireSpawn</strong>&nbsp;(default = true): When enabled, sleeping in a bed will override the campfire spawn point.</span><br><span style="font-size:12px"><strong>createAirPocketIfBlocksAboveCampfire</strong>&nbsp;(default = true): When enabled, the mod breaks the blocks above a campfire on respawn if it would somehow be blocked.</span><br><br><span style="font-size:12px"><strong>sendMessageOnNewCampfireSpawnSet</strong>&nbsp;(default = true): When enabled, a message will be sent to the player whenever a new campfire spawn point is set.</span><br><span style="font-size:12px"><strong>sendMessageOnCampfireSpawnUnset</strong>&nbsp;(default = true): When enabled, a message will be sent to the player whenever a campfire spawn point is unset.</span><br><span style="font-size:12px"><strong>sendMessageOnCampfireSpawnMissing</strong>&nbsp;(default = true): When enabled, a message will be sent to the player whenever a campfire spawn point is missing on respawn.</span><br><span style="font-size:12px"><strong>sendMessageOnCampfireSpawnOverride</strong>&nbsp;(default = true): When enabled, a message will be sent to the player whenever a campfire spawn point is overridden by the PlayerSetSpawnEvent.</span><br><br><span style="font-size:12px"><strong>fireResitanceDurationOnRespawnInMs</strong>&nbsp;(default = 10000, min 0, max 3600000): The duration of fire resistance when a player respawns at a campfire. A value of 0 disables this feature, and places the player next to the campfire instead.</span><br><br><br><span style="font-size:24px"><strong>Example GIFs:</strong></span><br><span style="font-size:14px">Place and break a campfire, to set and unset a spawnpoint:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/b.webp" width="1000" height="556"></picture></p>
-</div>
+</details>
 <p>&nbsp;<br><span style="font-size:14px">Place dirt on top of a campfire to extinguish it:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/c.webp" width="1000" height="552"></picture></p>
-</div>
+</details>
 <p><br><span style="font-size:14px">Respawning at the campfire:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/d.webp" width="1000" height="554"></picture></p>
-</div>
+</details>
 <p><br><span style="font-size:14px">Respawning inside the nether from the nether:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/e.webp" width="1000" height="554"></picture></p>
-</div>
+</details>
 <p><br><span style="font-size:14px">Respawning inside the nether from the overworld:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/f.webp" width="1000" height="556"></picture></p>
-</div>
+</details>
 <p><br><span style="font-size:14px">Remove waterlogging from a campfire by setting it on fire with a flint &amp; steel:</span></p>
-<div class="spoiler">
+<details><summary>Show Spoiler</summary>
 <p><picture><img src="https://cdn.serilum.com/projects/campfire-spawn-and-tweaks/g.webp"></picture></p>
-</div>
+</details>
 <p><br>------------------<br><br><span style="font-size:24px"><strong>You may freely use this mod in any modpack, as long as the download remains hosted within the CurseForge or Modrinth ecosystem.</strong></span><br><br><span style="font-size:18px"><a style="font-size:18px;color:#008000" href="https://serilum.com/" rel="nofollow">Serilum.com</a> contains an overview and more information on all mods available.</span><br><br><span style="font-size:14px">Comments are disabled as I'm unable to keep track of all the separate pages on each mod.</span><span style="font-size:14px"><br>For issues, ideas, suggestions or anything else there is the&nbsp;<a style="font-size:14px;color:#008000" href="https://github.com/Serilum/.issue-tracker" rel="nofollow">Github repo</a>. Thanks!</span><span style="font-size:6px"><br><br></span></p>

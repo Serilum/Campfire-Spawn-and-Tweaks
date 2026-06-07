@@ -92,7 +92,7 @@ public class CampfireEvent {
 					String playername = player.getName().toString();
 					playercampfires.remove(playername.toLowerCase());
 					if (ConfigHandler.sendMessageOnCampfireSpawnMissing) {
-						MessageFunctions.sendMessage(player, "Campfire spawn point missing.", ChatFormatting.DARK_GRAY);
+						MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointmissing", ChatFormatting.DARK_GRAY);
 					}
 				}
 			}
@@ -141,7 +141,7 @@ public class CampfireEvent {
 				if (ConfigHandler.sneakRightClickCampfireToUnset) {
 					if (Util.checkForCampfireSpawnRemoval(level, playername, pos)) {
 						if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
-							MessageFunctions.sendMessage(player, "Campfire spawn point removed.", ChatFormatting.DARK_GRAY);
+							MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremoved", ChatFormatting.DARK_GRAY);
 						}
 					}
 					return true;
@@ -177,7 +177,7 @@ public class CampfireEvent {
 					
 					if (Util.checkForCampfireSpawnRemoval(level, playername, pos)) {
 						if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
-							MessageFunctions.sendMessage(player, "Campfire spawn point removed.", ChatFormatting.DARK_GRAY);
+							MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremoved", ChatFormatting.DARK_GRAY);
 						}
 					}
 					removed = true;
@@ -200,14 +200,14 @@ public class CampfireEvent {
 							
 							if (replaced) {
 								if (oldpos.equals(pos)) {
-									MessageFunctions.sendMessage(player, "Campfire spawn point remains the same.", ChatFormatting.DARK_GRAY);
+									MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremains", ChatFormatting.DARK_GRAY);
 									return true;
 								}
-								MessageFunctions.sendMessage(player, "Campfire spawn point replaced.", ChatFormatting.DARK_GRAY);
+								MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointreplaced", ChatFormatting.DARK_GRAY);
 								return true;
 							}
 							
-							MessageFunctions.sendMessage(player, "Campfire spawn point set.", ChatFormatting.DARK_GRAY);
+							MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointset", ChatFormatting.DARK_GRAY);
 						}
 					}
 				}
@@ -235,7 +235,7 @@ public class CampfireEvent {
 					
 					if (Util.checkForCampfireSpawnRemoval(level, playername, oldpos)) {
 						if (ConfigHandler.sendMessageOnCampfireSpawnOverride) {
-							MessageFunctions.sendMessage(player, "Campfire spawn point unset.", ChatFormatting.DARK_GRAY);
+							MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointunset", ChatFormatting.DARK_GRAY);
 						}
 					}
 				}
@@ -255,7 +255,7 @@ public class CampfireEvent {
 
 			if (Util.checkForCampfireSpawnRemoval(level, playername, pos)) {
 				if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
-					MessageFunctions.sendMessage(player, "Campfire spawn point removed.", ChatFormatting.DARK_GRAY);
+					MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremoved", ChatFormatting.DARK_GRAY);
 				}
 			}
 		}

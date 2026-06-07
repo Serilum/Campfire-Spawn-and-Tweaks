@@ -1,5 +1,5 @@
 <h2>Campfire Spawn and Tweaks</h2>
-<p><a href="https://github.com/Serilum/Campfire-Spawn-and-Tweaks"><img src="https://serilum.com/assets/data/logo/campfire-spawn-and-tweaks.gif"></a></p><h2>Download</h2>
+<p><a href="https://github.com/Serilum/Campfire-Spawn-and-Tweaks"><img src="https://serilum.com/assets/images/logo/campfire-spawn-and-tweaks.gif"></a></p><h2>Download</h2>
 <p>You can download Campfire Spawn and Tweaks on CurseForge and Modrinth:</p><p>&nbsp;&nbsp;CurseForge: &nbsp;&nbsp;<a href="https://curseforge.com/minecraft/mc-mods/campfire-spawn-and-tweaks">https://curseforge.com/minecraft/mc-mods/campfire-spawn-and-tweaks</a><br>&nbsp;&nbsp;Modrinth: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://modrinth.com/mod/campfire-spawn-and-tweaks">https://modrinth.com/mod/campfire-spawn-and-tweaks</a></p>
 <h2>Issue Tracker</h2>
 <p>To keep a better overview of all mods, the issue tracker is located in a separate repository.<br>&nbsp;&nbsp;For issues, ideas, suggestions or anything else, please follow this link:</p>

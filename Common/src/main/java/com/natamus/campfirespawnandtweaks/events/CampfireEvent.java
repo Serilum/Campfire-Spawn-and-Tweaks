@@ -14,6 +14,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -196,7 +197,7 @@ public class CampfireEvent {
 						if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
 							if (holdinglighter) {
 								level.setBlockAndUpdate(pos, state.setValue(CampfireBlock.WATERLOGGED, false));
-								player.swing(hand);
+								player.swingAndResetAttackStrength(hand, SwingAnimation.DEFAULT, false);
 							}
 							
 							if (replaced) {

@@ -1,7 +1,7 @@
-package com.natamus.campfirespawnandtweaks.forge.config;
+package com.serilum.campfirespawnandtweaks.forge.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.campfirespawnandtweaks.util.Reference;
+import com.serilum.campfirespawnandtweaks.util.Reference;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 

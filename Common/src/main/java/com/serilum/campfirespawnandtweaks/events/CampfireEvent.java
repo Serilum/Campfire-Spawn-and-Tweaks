@@ -1,8 +1,8 @@
-package com.natamus.campfirespawnandtweaks.events;
+package com.serilum.campfirespawnandtweaks.events;
 
 import com.mojang.datafixers.util.Pair;
-import com.natamus.campfirespawnandtweaks.config.ConfigHandler;
-import com.natamus.campfirespawnandtweaks.util.Util;
+import com.serilum.campfirespawnandtweaks.config.ConfigHandler;
+import com.serilum.campfirespawnandtweaks.util.Util;
 import com.natamus.collective.functions.*;
 import com.natamus.collective.services.Services;
 import net.minecraft.ChatFormatting;

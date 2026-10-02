@@ -1,8 +1,8 @@
-package com.natamus.campfirespawnandtweaks;
+package com.serilum.campfirespawnandtweaks;
 
-import com.natamus.campfirespawnandtweaks.forge.config.IntegrateForgeConfig;
-import com.natamus.campfirespawnandtweaks.forge.events.ForgeCampfireEvent;
-import com.natamus.campfirespawnandtweaks.util.Reference;
+import com.serilum.campfirespawnandtweaks.forge.config.IntegrateForgeConfig;
+import com.serilum.campfirespawnandtweaks.forge.events.ForgeCampfireEvent;
+import com.serilum.campfirespawnandtweaks.util.Reference;
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,7 +32,7 @@ public class ModForge {
 	}
 
 	private void loadComplete(final FMLLoadCompleteEvent event) {
-    	MinecraftForge.EVENT_BUS.register(ForgeCampfireEvent.class);
+		MinecraftForge.EVENT_BUS.register(ForgeCampfireEvent.class);
 	}
 
 	private static void setGlobalConstants() {

@@ -1,7 +1,7 @@
-package com.natamus.campfirespawnandtweaks;
+package com.serilum.campfirespawnandtweaks;
 
-import com.natamus.campfirespawnandtweaks.events.CampfireEvent;
-import com.natamus.campfirespawnandtweaks.util.Reference;
+import com.serilum.campfirespawnandtweaks.events.CampfireEvent;
+import com.serilum.campfirespawnandtweaks.util.Reference;
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
 import com.natamus.collective.fabric.callbacks.CollectiveBlockEvents;

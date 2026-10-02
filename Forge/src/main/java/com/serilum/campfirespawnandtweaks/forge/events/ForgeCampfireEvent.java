@@ -1,6 +1,6 @@
-package com.natamus.campfirespawnandtweaks.forge.events;
+package com.serilum.campfirespawnandtweaks.forge.events;
 
-import com.natamus.campfirespawnandtweaks.events.CampfireEvent;
+import com.serilum.campfirespawnandtweaks.events.CampfireEvent;
 import com.natamus.collective.functions.WorldFunctions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

@@ -1,7 +1,7 @@
-package com.natamus.campfirespawnandtweaks.config;
+package com.serilum.campfirespawnandtweaks.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.campfirespawnandtweaks.util.Reference;
+import com.serilum.campfirespawnandtweaks.util.Reference;
 
 import java.util.Arrays;
 import java.util.HashMap;

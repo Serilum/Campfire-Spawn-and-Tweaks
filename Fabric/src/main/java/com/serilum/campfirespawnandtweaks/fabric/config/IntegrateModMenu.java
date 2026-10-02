@@ -1,7 +1,7 @@
-package com.natamus.campfirespawnandtweaks.fabric.config;
+package com.serilum.campfirespawnandtweaks.fabric.config;
 
 import com.natamus.collective.config.DuskConfig;
-import com.natamus.campfirespawnandtweaks.util.Reference;
+import com.serilum.campfirespawnandtweaks.util.Reference;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 

@@ -1,6 +1,6 @@
-package com.natamus.campfirespawnandtweaks;
+package com.serilum.campfirespawnandtweaks;
 
-import com.natamus.campfirespawnandtweaks.config.ConfigHandler;
+import com.serilum.campfirespawnandtweaks.config.ConfigHandler;
 
 public class ModCommon {
 

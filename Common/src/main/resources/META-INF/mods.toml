@@ -1,28 +1,28 @@
 modLoader="javafml"
 loaderVersion="*"
-license="All rights reserved"
+license="All Rights Reserved"
 issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20Campfire%20Spawn%20and%20Tweaks"
 logoFile="icon.png"
 
 [[mods]]
 modId="campfirespawnandtweaks"
-version="4.3"
+version="4.4"
 displayName="Campfire Spawn and Tweaks"
 displayURL="https://serilum.com/mod/campfire-spawn-and-tweaks"
-authors="Rick South"
+authors="Serilum"
 description='''Allows player to set spawn points inside a campfire, gives fire resistance on respawn and does some other tweaks.
 '''
 credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
 
 Andrean Olgo, AnyankaT, aternosorg, Cherriesaurus, Linda Jansen, MWS, Tyler Behl   
 
-If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
+If you would like to contribute too, check out https://serilum.com/donate Appreciate it! <3   
 '''
 
 [[dependencies.campfirespawnandtweaks]]
     modId="collective"
     mandatory=true
-    versionRange="[8.39,)"
+    versionRange="[8.40,)"
     ordering="NONE"
     side="BOTH"
 

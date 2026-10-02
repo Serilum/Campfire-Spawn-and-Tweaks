@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.natamus.campfirespawnandtweaks.mixin",
+  "package": "com.serilum.campfirespawnandtweaks.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
   ],

@@ -11,8 +11,10 @@ public class ConfigHandler extends DuskConfig {
 	public static HashMap<String, List<String>> configMetaData = new HashMap<String, List<String>>();
 
 	@Entry public static boolean campfiresStartUnlit = true;
-	@Entry public static boolean sneakRightClickCampfireToUnset = true;
-	@Entry public static boolean bedsOverrideCampfireSpawnOnSneakRightClick = true;
+	@Entry public static boolean crouchRightClickCampfireToUnset = true;
+	@Entry public static boolean onlySetSpawnWhenCrouching = false;
+	@Entry(registry = "dimension") public static String dimensionsWithoutCampfireSpawns = "";
+	@Entry public static boolean bedsOverrideCampfireSpawn = true;
 	@Entry public static boolean createAirPocketIfBlocksAboveCampfire = true;
 	@Entry public static boolean sendMessageOnNewCampfireSpawnSet = true;
 	@Entry public static boolean sendMessageOnCampfireSpawnUnset = true;
@@ -24,11 +26,17 @@ public class ConfigHandler extends DuskConfig {
 		configMetaData.put("campfiresStartUnlit", Arrays.asList(
 			"When enabled, a newly placed campfire will be unlit."
 		));
-		configMetaData.put("sneakRightClickCampfireToUnset", Arrays.asList(
-			"Crouching/Sneaking and right-clicking on a campfire unsets the campfire spawn point."
+		configMetaData.put("crouchRightClickCampfireToUnset", Arrays.asList(
+			"Crouching and right-clicking on a campfire unsets the campfire spawn point."
 		));
-		configMetaData.put("bedsOverrideCampfireSpawnOnSneakRightClick", Arrays.asList(
-			"When enabled, sneak/crouch + right-clicking a bed will override the campfire spawn point."
+		configMetaData.put("onlySetSpawnWhenCrouching", Arrays.asList(
+			"When enabled, only crouch + right-clicking a campfire sets the spawn point. Crouch + right-clicking your own spawn campfire unsets it."
+		));
+		configMetaData.put("dimensionsWithoutCampfireSpawns", Arrays.asList(
+			"Dimensions in which campfires can't be used as a spawn point, separated by a comma. For example: 'minecraft:the_nether,minecraft:the_end'."
+		));
+		configMetaData.put("bedsOverrideCampfireSpawn", Arrays.asList(
+			"When enabled, crouch + right-clicking a bed will override the campfire spawn point."
 		));
 		configMetaData.put("createAirPocketIfBlocksAboveCampfire", Arrays.asList(
 			"When enabled, the mod breaks the blocks above a campfire on respawn if it would somehow be blocked."

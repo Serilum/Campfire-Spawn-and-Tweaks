@@ -4,15 +4,12 @@ import com.serilum.campfirespawnandtweaks.events.CampfireEvent;
 import com.natamus.collective.functions.WorldFunctions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent.LevelTickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.event.level.BlockEvent.EntityPlaceEvent;
 import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -35,21 +32,6 @@ public class ForgeCampfireEvent {
 		}
 
 		CampfireEvent.onWorldTick((ServerLevel)level);
-	}
-	
-	@SubscribeEvent
-	public static void onEntityBlockPlace(EntityPlaceEvent e) {
-		Level level = WorldFunctions.getWorldIfInstanceOfAndNotRemote(e.getLevel());
-		if (level == null) {
-			return;
-		}
-
-		Entity entity = e.getEntity();
-		if (!(entity instanceof LivingEntity)) {
-			return;
-		}
-
-		CampfireEvent.onEntityBlockPlace(level, e.getPos(), e.getPlacedBlock(), (LivingEntity)entity, null);
 	}
 	
 	@SubscribeEvent

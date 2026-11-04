@@ -11,8 +11,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Relative;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.item.Item;
@@ -74,8 +72,9 @@ public class CampfireEvent {
 					}
 					
 					if (ConfigHandler.createAirPocketIfBlocksAboveCampfire) {
-						BlockPos tsbp = BlockPos.containing(ts.x, ts.y, ts.z);
-						Iterator<BlockPos> posaround = BlockPos.betweenClosedStream(tsbp.getX(), tsbp.getY(), tsbp.getZ(), tsbp.getX(), tsbp.getY()+1, tsbp.getZ()).iterator();
+						BlockPos feetPos = BlockPos.containing(ts.x, ts.y, ts.z);
+						BlockPos headPos = BlockPos.containing(ts.x, ts.y + player.getBbHeight(), ts.z);
+						Iterator<BlockPos> posaround = BlockPos.betweenClosedStream(feetPos, headPos).iterator();
 						while (posaround.hasNext()) {
 							BlockPos around = posaround.next();
 							Block block = level.getBlockState(around).getBlock();
@@ -88,10 +87,10 @@ public class CampfireEvent {
 						
 					}
 					
-					serverplayer.teleportTo(level, ts.x, ts.y, ts.z, Relative.ALL, player.getYRot(), player.getXRot(), true);
+					serverplayer.teleportTo(level, ts.x, ts.y, ts.z, Set.of(), player.getYRot(), player.getXRot(), true);
 				}
 				else {
-					String playername = player.getName().toString();
+					String playername = player.getName().getString();
 					playercampfires.remove(playername.toLowerCase());
 					if (ConfigHandler.sendMessageOnCampfireSpawnMissing) {
 						MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointmissing", ChatFormatting.DARK_GRAY);
@@ -103,29 +102,16 @@ public class CampfireEvent {
 		}
 	}
 	
-	public static boolean onEntityBlockPlace(Level level, BlockPos pos, BlockState state, LivingEntity entity, ItemStack itemStack) {
-		if (level.isClientSide()) {
-			return true;
+	public static BlockState onCampfirePlacement(BlockState placementState, Player player) {
+		if (!ConfigHandler.campfiresStartUnlit || player == null) {
+			return placementState;
 		}
-		
-		if (!(entity instanceof Player)) {
-			return true;
+
+		if (Services.TOOLFUNCTIONS.isFlintAndSteel(player.getMainHandItem()) || Services.TOOLFUNCTIONS.isFlintAndSteel(player.getOffhandItem())) {
+			return placementState;
 		}
-		
-		Block block = state.getBlock();
-		if (block instanceof CampfireBlock) {
-			Player player = (Player)entity;
-			if (Services.TOOLFUNCTIONS.isFlintAndSteel(player.getMainHandItem()) || Services.TOOLFUNCTIONS.isFlintAndSteel(player.getOffhandItem())) {
-				return true;
-			}
-			
-			if (ConfigHandler.campfiresStartUnlit) {
-				level.setBlockAndUpdate(pos, state.setValue(CampfireBlock.LIT, false));
-				return false;
-			}
-		}
-		
-		return true;
+
+		return placementState.setValue(CampfireBlock.LIT, false);
 	}
 	
 	public static boolean onRightClickCampfireBlock(Level level, Player player, InteractionHand hand, BlockPos pos, BlockHitResult hitVec) {
@@ -139,15 +125,13 @@ public class CampfireEvent {
 		boolean allowAction = true;
 		if (block instanceof CampfireBlock) {
 			String playername = player.getName().getString();
-			if (player.isShiftKeyDown()) {
-				if (ConfigHandler.sneakRightClickCampfireToUnset) {
-					if (Util.checkForCampfireSpawnRemoval(level, playername, pos)) {
-						if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
-							MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremoved", ChatFormatting.DARK_GRAY);
-						}
+			if (player.isShiftKeyDown() && Util.shouldCrouchUnsetCampfireSpawn(level, playername, pos)) {
+				if (Util.checkForCampfireSpawnRemoval(level, playername, pos)) {
+					if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
+						MessageFunctions.sendTranslatableMessage(player, "collective.campfirespawnandtweaks.message.campfirespawnpointremoved", ChatFormatting.DARK_GRAY);
 					}
-					return true;
 				}
+				return true;
 			}
 			
 			ItemStack itemstack = player.getItemInHand(hand);
@@ -186,7 +170,7 @@ public class CampfireEvent {
 				}
 				
 
-				if (!removed && hand.equals(InteractionHand.MAIN_HAND) && (holdinglighter || itemstack.isEmpty())) {
+				if (!removed && hand.equals(InteractionHand.MAIN_HAND) && (holdinglighter || itemstack.isEmpty()) && Util.canSetCampfireSpawn(level, player)) {
 					boolean replaced = playercampfires.containsKey(playername.toLowerCase());
 					BlockPos oldpos = null;
 					if (replaced) {
@@ -197,7 +181,7 @@ public class CampfireEvent {
 						if (ConfigHandler.sendMessageOnNewCampfireSpawnSet) {
 							if (holdinglighter) {
 								level.setBlockAndUpdate(pos, state.setValue(CampfireBlock.WATERLOGGED, false));
-								player.swingAndResetAttackStrength(hand, SwingAnimation.DEFAULT, false);
+								((ServerPlayer)player).swingAndResetAttackStrength(hand, SwingAnimation.DEFAULT, false);
 							}
 							
 							if (replaced) {
@@ -217,7 +201,7 @@ public class CampfireEvent {
 		}
 		else if (block instanceof BedBlock) {
 			if (player.isShiftKeyDown()) {
-				if (!ConfigHandler.bedsOverrideCampfireSpawnOnSneakRightClick) {
+				if (!ConfigHandler.bedsOverrideCampfireSpawn) {
 					return true;
 				}
 				
@@ -276,6 +260,10 @@ public class CampfireEvent {
 		}
 		
 		Pair<Level, BlockPos> pair = playercampfires.get(playername);
+		if (Util.isDimensionWithoutCampfireSpawns(pair.getFirst())) {
+			return;
+		}
+
 		HashMapFunctions.computeIfAbsent(playerstorespawn, pair.getFirst(), k -> new ArrayList<Pair<Player, BlockPos>>()).add(new Pair<Player, BlockPos>(newPlayer, pair.getSecond().immutable()));
 	}
 }

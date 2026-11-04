@@ -4,6 +4,7 @@
   "package": "com.serilum.campfirespawnandtweaks.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
+    "CampfireBlockMixin"
   ],
   "client": [
   ],

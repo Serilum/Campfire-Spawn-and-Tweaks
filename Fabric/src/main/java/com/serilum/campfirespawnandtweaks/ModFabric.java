@@ -14,7 +14,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -45,10 +44,6 @@ public class ModFabric implements ModInitializer {
 
 		ServerTickEvents.START_LEVEL_TICK.register((ServerLevel world) -> {
 			CampfireEvent.onWorldTick(world);
-		});
-
-		CollectiveBlockEvents.BLOCK_PLACE.register((Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) -> {
-			return CampfireEvent.onEntityBlockPlace(level, blockPos, blockState, livingEntity, itemStack);
 		});
 
 		CollectiveBlockEvents.BLOCK_RIGHT_CLICK.register((Level world, Player player, InteractionHand hand, BlockPos pos, BlockHitResult hitVec) -> {

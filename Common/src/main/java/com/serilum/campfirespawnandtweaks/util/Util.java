@@ -1,9 +1,10 @@
 package com.serilum.campfirespawnandtweaks.util;
 
 import com.mojang.datafixers.util.Pair;
-import com.serilum.campfirespawnandtweaks.config.ConfigHandler;
-import com.serilum.campfirespawnandtweaks.events.CampfireEvent;
 import com.natamus.collective.functions.*;
+import com.serilum.campfirespawnandtweaks.config.ConfigHandler;
+import com.serilum.campfirespawnandtweaks.data.Constants;
+import com.serilum.campfirespawnandtweaks.events.CampfireEvent;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -39,7 +40,7 @@ public class Util {
 				try {
 					filecontent = new String(Files.readAllBytes(Paths.get(campfirespawnfolder + File.separator + filename)));
 				} catch (IOException e) {
-					System.out.println("[Error] Campfire Spawn: Something went wrong while loading a campfire spawn location for player " + playername + ".");
+					Constants.logger.warn("[" + Reference.NAME + "] Something went wrong while loading a campfire spawn location for player " + playername + ".");
 					continue;
 				}
 
@@ -74,7 +75,7 @@ public class Util {
 			writer.println(campfirepos.getX() + "_" + campfirepos.getY() + "_" + campfirepos.getZ());
 			writer.close();
 		} catch (Exception e) {
-			System.out.println("[Error] Campfire Spawn: Something went wrong while saving a campfire spawn location for player " + playername + ".");
+			Constants.logger.warn("[" + Reference.NAME + "] Something went wrong while saving a campfire spawn location for player " + playername + ".");
 			return false;
 		}
 		
@@ -82,6 +83,46 @@ public class Util {
 		return true;
 	}
 	
+	public static boolean canSetCampfireSpawn(Level level, Player player) {
+		if (ConfigHandler.onlySetSpawnWhenCrouching && !player.isShiftKeyDown()) {
+			return false;
+		}
+
+		return !isDimensionWithoutCampfireSpawns(level);
+	}
+
+	public static boolean isDimensionWithoutCampfireSpawns(Level level) {
+		String dimensionName = WorldFunctions.getWorldDimensionName(level);
+		for (String listedDimension : ConfigHandler.dimensionsWithoutCampfireSpawns.split(",")) {
+			if (listedDimension.strip().equals(dimensionName)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static boolean shouldCrouchUnsetCampfireSpawn(Level level, String playerName, BlockPos campfirePos) {
+		if (!ConfigHandler.crouchRightClickCampfireToUnset) {
+			return false;
+		}
+
+		if (!ConfigHandler.onlySetSpawnWhenCrouching) {
+			return true;
+		}
+
+		return isPlayersCampfireSpawn(level, playerName, campfirePos);
+	}
+
+	public static boolean isPlayersCampfireSpawn(Level level, String playerName, BlockPos campfirePos) {
+		Pair<Level, BlockPos> playerCampfire = CampfireEvent.playercampfires.get(playerName.toLowerCase());
+		if (playerCampfire == null) {
+			return false;
+		}
+
+		return playerCampfire.getFirst().equals(level) && playerCampfire.getSecond().equals(campfirePos);
+	}
+
 	public static boolean checkForCampfireSpawnRemoval(Level level, String playername, BlockPos campfirepos) {
 		List<String> fromplayernames = new ArrayList<String>();
 		for (String pname : CampfireEvent.playercampfires.keySet()) {
@@ -105,7 +146,7 @@ public class Util {
 						writer.print("");
 						writer.close();
 					} catch (Exception e) {
-						System.out.println("[Error] Campfire Spawn: Something went wrong while removing a campfire spawn location for player " + playername + ".");
+						Constants.logger.warn("[" + Reference.NAME + "] Something went wrong while removing a campfire spawn location for player " + playername + ".");
 					}
 				}
 				
